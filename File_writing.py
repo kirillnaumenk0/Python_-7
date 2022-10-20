@@ -1,3 +1,6 @@
+import csv
+
+
 def write_phone_book():
     surnames = []
     names = []
@@ -6,7 +9,7 @@ def write_phone_book():
     while True:
         surname = input('Введите фамилию, или команду (end) для завершения ')
         if surname == 'end':
-           break
+            break
         name = input('Введите имя: ')
         phone = input('Введите номер телефона: ')
         comment = input('Введите коментарий: ')
@@ -14,15 +17,23 @@ def write_phone_book():
         names.append(name)
         phones.append(phone)
         comments.append(comment)
-    
-    phone_book = {}
+
+    phones_book = {}
     for i in range(len(surnames)):
         key = i + 1
-        phone_book[key] = []
-        phone_book[key].append(surnames(i))
-        phone_book[key].append(names(i))
-        phone_book[key].append(phones(i))
-        phone_book[key].append(comments(i))
-    return phone_book
+        phones_book[key] = []
+        phones_book[key].append(surnames[i])
+        phones_book[key].append(names[i])
+        phones_book[key].append(phones[i])
+        phones_book[key].append(comments[i])
+    return phones_book
 
-write_phone_book()
+
+book = write_phone_book()
+
+def writing_csv():
+    with open("data1.csv", "a", newline='') as file:
+        for value in book.values():
+            writer = csv.writer(file, delimiter=';', quotechar='"')
+            writer.writerow(value)
+
