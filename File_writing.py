@@ -29,11 +29,12 @@ def write_phone_book():
     return phones_book
 
 
-book = write_phone_book()
+
 
 
 def writing_csv():
     with open("data1.csv", "a", newline='') as file:
+        book = write_phone_book()
         for value in book.values():
             writer = csv.writer(file, delimiter=';', quotechar='"')
             writer.writerow(value)
